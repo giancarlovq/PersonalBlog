@@ -6,25 +6,16 @@
 
 {% block content %}
 
-    <form method="POST" autocomplete="off">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4"> Log In </legend>
-            {{ form | crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-info" type="submit"> Login </button>
-        </div>
-    </form>
-    
-    <!-- Register -->
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Need An Account? 
-            <a class="ml-2" href="{% url 'register' %}" role="link">
-                Sign Up Now 
-            </a>
-        </small>
+    <div class="container my-4">
+        <form class="form-group" action="" method="POST">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ form }}
+
+                <button class="btn btn-success" type="submit"> Login </button>
+                <p><a href="{% url 'register' %}"> Account create </a></p>
+            </div>
+        </form>
     </div>
 
 {% endblock %}
