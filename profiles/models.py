@@ -13,7 +13,4 @@ class UserRegister(models.Model):
 
     class Meta:
         ordering = ['first_name']
-
-    def get_absolute_url(self):
-        return reverse('register')
-
+        verbose_name_plural = 'Users Register'

@@ -1,17 +1,17 @@
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from .forms import UserRegisterForm
 
 
 # Create your views here.
-class Register(TemplateView):
+class RegisterView(TemplateView):
 
-    user_register = UserRegisterForm
-    initial = {'key': 'value'}
+    register_form_class = UserRegisterForm
     template_name = 'profiles/register.html'
 
     def get(self, request, *args, **kwargs):
-        form = self.user_register(initial = self.initial)
+        form = self.register_form_class
         return render(request, self.template_name, {'form': form})
+
+    
