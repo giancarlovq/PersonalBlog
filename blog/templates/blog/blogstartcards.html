@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+    {% for publication in publications %}
+
+        <div class="container">
+            <div class="jumbotron my-5">
+                <h1 class="display-4"> Blog Name </h1>
+                <p class="lead"> Blog description </p>
+                <hr class="my-4">
+                <p><small class="text-muted"> {{ publication.author }} </small></p>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-6 my-3">
+                    <div class="card" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img class="card-img" src="{{ publication.image.url }}" alt="image">
+                            </div>
+                            <div class="col-sm-12 col-lg-8">
+                                <div class="card-body">
+                                    <h4 class="card-title"> {{ publication.title }} </h4>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            {{ publication.published | date:'SHORT_DATE_FORMAT' }}
+                                        </small>
+                                    </p>
+                                    <p class="card-text lead text-justify">
+                                        {{ publication.content | truncatewords:15 }}
+                                    </p>
+                                    <a class="card-link" href="{% url 'blog_post_pages' %}"> Keep reading </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

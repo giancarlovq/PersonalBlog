@@ -3,6 +3,10 @@ from .models import Publication
 
 
 # Create your views here.
-def blog(request):
+def blog_start_cards(request):
     publications = Publication.objects.all()
-    return render(request, 'blog/blog.html', {'publications': publications})
+    return render(request, 'blog/blogstartcards.html', {'publications': publications})
+
+def blog_post_pages(request):
+    publications = Publication.objects.all()
+    return render(request, 'blog/blogpostpages.html', {'publications': publications})
