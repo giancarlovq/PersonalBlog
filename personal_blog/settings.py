@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'about',
-    'contact',
-    'blog',
-    'profiles',
+    'core.apps.CoreConfig',
+    'about.apps.AboutConfig',
+    'contact.apps.ContactConfig',
+    'blog.apps.BlogConfig',
+    'profiles.apps.ProfilesConfig',
     'crispy_forms',
-    'login',
+    'login.apps.LoginConfig',
+    'social.apps.SocialConfig',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.processors.context_processors',
             ],
         },
     },
