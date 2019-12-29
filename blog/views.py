@@ -1,12 +1,39 @@
+""" View List and Detail. """
+
+# Django
 from django.shortcuts import render
-from .models import Publication
+from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.db import models
+
+# Local | Model
+from .models import Publication, BlogInformation
 
 
 # Create your views here.
-def blog_start_cards(request):
-    publications = Publication.objects.all()
-    return render(request, 'blog/blogstartcards.html', {'publications': publications})
+class BlogCardsList(ListView):
+    """
+    shown in the information inside the cards in the 'home'.
+    Location: Home > cards
+    """
 
-def blog_post_pages(request):
-    publications = Publication.objects.all()
-    return render(request, 'blog/blogpostpages.html', {'publications': publications})
+    model = Publication
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """
+        Show information about the blog.
+        Location: Home > jumbotron
+        """
+        context_blog_info = super().get_context_data(**kwargs)
+        context_blog_info['blog_info'] = BlogInformation.objects.all()
+        return context_blog_info
+
+
+
+class BlogPagesDetail(DetailView):
+    """
+    Detailed view of each publication.
+    """
+
+    model = Publication

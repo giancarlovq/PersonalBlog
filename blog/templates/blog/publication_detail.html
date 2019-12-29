@@ -5,52 +5,49 @@
 
 {% block content %}
 
-    {% for publication in publications %}
-        <div class="container my-5">
-            <div class="shadow-sm p-5 mx-2 mb-5 bg-white rounded">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-2">
-                            <span class="badge badge-primary"> Status:
-                                {{ publication.status }}
-                            </span>
-                        </div>
-                        <div class="col-7"></div>
-                        <div class="col-3 text-muted">
-                            Published:
-                            {{ publication.published | date:'SHORT_DATE_FORMAT' }}
-                        </div>
+    <div class="container my-5">
+        <div class="shadow-sm p-5 mx-2 mb-5 bg-white rounded">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <span class="badge badge-primary"> Status:
+                            {{ publication.status }}
+                        </span>
+                    </div>
+                    <div class="col-7"></div>
+                    <div class="col-3 text-muted">
+                        Published:
+                        {{ publication.published | date:'SHORT_DATE_FORMAT' }}
                     </div>
                 </div>
-                <h1 class="display-3 mt-5 text-center"> {{ publication.title }} </h1>
-                <blockquote class="blockquote">
-                    <p class="text-center my-5"> {{ publication.subtitle }} </p>
-                </blockquote>
-                <p class="lead text-justify"> {{ publication.content }}</p>
-
-                <div class="p-3 mb-2 bg-white text-muted">
-                    <p class="font-weight-bold"> Author: </p>
-                    {{ publication.author }}
-                    <p class="font-weight-bold mt-4"> Category: </p>
-                    {% for category in publication.category.all %}
-                        {{ category.name }} {% if not forloop.last %} , {% endif %}
-                    {% endfor %}
-                    <p class="font-weight-bold mt-4"> Sources: </p>
-                    {{ publication.sources }}
-                </div>
-
-                {% if user.is_authenticated %}
-                    <div class="text-center mt-5">
-                        <a href="{% url 'admin:blog_publication_change' publication.id  %}">
-                            <button class="btn btn-outline-primary btn-lg" type="button">
-                                Edit
-                            </button>
-                        </a>
-
-                    </div>
-                {% endif %}
             </div>
+            <h1 class="display-3 mt-5 text-center"> {{ publication.title }} </h1>
+            <blockquote class="blockquote">
+                <p class="text-center my-5"> {{ publication.subtitle }} </p>
+            </blockquote>
+            <p class=""> {{ publication.content | safe }}</p>
+
+            <div class="p-3 mb-2 bg-white text-muted">
+                <p class="font-weight-bold"> Author: </p>
+                {{ publication.author }}
+                <p class="font-weight-bold mt-4"> Category: </p>
+                {% for category in publication.category.all %}
+                    {{ category.name }} {% if not forloop.last %} , {% endif %}
+                {% endfor %}
+                <p class="font-weight-bold mt-4"> Sources: </p>
+                {{ publication.sources | safe }}
+            </div>
+
+            {% if user.is_authenticated %}
+                <div class="text-center mt-5">
+                    <a href="{% url 'admin:blog_publication_change' publication.id  %}">
+                        <button class="btn btn-outline-primary btn-lg" type="button">
+                            Edit
+                        </button>
+                    </a>
+                </div>
+            {% endif %}
         </div>
-    {% endfor %}
+    </div>
 
 {% endblock %}

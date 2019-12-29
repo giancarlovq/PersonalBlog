@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Category, Publication
+from .models import BlogInformation, Category, Publication
+
+
+class BlogInformationAdmin(admin.ModelAdmin):
+    readonly_fields = ('created',)
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -17,10 +21,15 @@ class PublicationAdmin(admin.ModelAdmin):
     def display_categories(self, obj):
         return ', '.join([category.name for category in obj.category.all().order_by('name')])
 
-
     display_categories.short_description = 'Categories'
 
+    class Media:
+        """ Custom Admin Ckeditor  """
+        css = {
+            'all': ('blog/css/custom_ckeditor.css',)
+            }
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Publication, PublicationAdmin)
+admin.site.register(BlogInformation)
