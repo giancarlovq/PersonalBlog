@@ -37,14 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Local Apps | Home
     'core.apps.CoreConfig',
+    # Local Apps | About
     'about.apps.AboutConfig',
+    # Local Apps | Contact
     'contact.apps.ContactConfig',
+    # Local Apps | Blog
     'blog.apps.BlogConfig',
-    'profiles.apps.ProfilesConfig',
-    'crispy_forms',
-    'login.apps.LoginConfig',
+    # Local Apps | Social | Footer
     'social.apps.SocialConfig',
+    # Custom Form
+    'crispy_forms',
+    # Custom
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +137,23 @@ STATIC_URL = '/static/'
 
 # Django Crispy Form
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# MEDIA ROOT
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA URL
+MEDIA_URL = '/media/'
+
+# Custom ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            [ 'Bold', 'Italic', 'Underline' ],
+            [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
+              'JustifyRight', 'JustifyBlock' ],
+            [ 'Link', 'Unlink' ],
+            [ 'RemoveFormat', 'Source' ]
+            ]
+        },
+    }
+
