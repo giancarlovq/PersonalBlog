@@ -1,19 +1,18 @@
+""" Contact Model Based Form. """
+
+# Django
+from django.forms import ModelForm, Textarea
+# Django Form
+from django.forms import Textarea
+
+# Local | Model > Contact
 from .models import Contact
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-from django.forms import ModelForm
 
 
 class ContactForm(ModelForm):
-
-    helper = FormHelper()
-    helper.form_id = 'id_contact_Form'
-    helper.form_class = 'blueForms'
-    helper.form_method = 'post'
-    helper.form_action = 'submit_survey'
-
-    helper.add_input(Submit('submit', 'Submit'))
-
+    """
+     Form inherits from the ModelForm model.
+    """
 
     class Meta:
         model = Contact
@@ -21,11 +20,17 @@ class ContactForm(ModelForm):
         fields = [
             'user_name',
             'email_address',
-            'massage',
+            'message',
             ]
 
         labels = {
             'user_name': 'Full Name',
             'email_address': 'Email',
-            'massage': 'Content',
+            'message': 'Content',
+            }
+
+        # Overwrite the default field of the model.
+        # Represented 'TextField' by a 'Textarea'.
+        widgets = {
+            'message': Textarea(attrs = {'rows': 4}),
             }

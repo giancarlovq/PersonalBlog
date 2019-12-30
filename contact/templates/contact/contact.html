@@ -3,16 +3,27 @@
 {% block title %} Contact {% endblock %}
 
 {% load crispy_forms_tags %}
-{% crispy contact_form contact_form.helper %}
 
 {% block content %}
+
+    {% if 'Success' in request.GET %}
+        <div class="alert alert-success" role="alert">
+            Sent successful! Will get in touch with you soon.
+        </div>
+    {% elif 'Failed' in request.GET %}
+        <div class="alert alert-danger" role="alert">
+            Delivery failed! Please try again in a few moments or contact me through my social networks
+        </div>
+    {% endif %}
+
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10 col-xl-7">
-                <form class="m-5" action="">
-                    <h1 class="pb-5 text-center"> Contact </h1>
+            <div class="col-md-9 col-lg-7 col-xl-6">
+                <form method="post">
+                    <h1 class="py-5"> Contact </h1>
                     {% csrf_token %}
-                    {% crispy form %}
+                    {{ form | crispy }}
+                    <button class="btn btn-primary btn-block mt-4 mb-5" type="submit"> Submit </button>
                 </form>
             </div>
         </div>
