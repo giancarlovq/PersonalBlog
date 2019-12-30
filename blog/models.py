@@ -53,7 +53,10 @@ class Publication(models.Model):
 
     class Meta:
         verbose_name_plural = 'Publications'
-        ordering = ['-created']
+        ordering = [
+            '-created',
+            '-updated'
+            ]
 
     def __str__(self):
         return self.title
