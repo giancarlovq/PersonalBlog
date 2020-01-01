@@ -1,8 +1,15 @@
+""" Model Social """
+
+# Django
 from django.db import models
 
 
 # Create your models here.
 class SocialNetwork(models.Model):
+    """
+    Model of social networks.
+    """
+
     key = models.SlugField(max_length = 100, unique = True)
     name = models.CharField(max_length = 100)
     url = models.URLField(max_length = 300, null = True, blank = True)
