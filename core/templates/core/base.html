@@ -9,6 +9,7 @@
         
         <title>{% block title %}{% endblock %} | Personal Block </title>
 
+        {% load static %}
         <!-- Bootstrap -->
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,93 +18,105 @@
         >
 
         <!-- Place your kit's code -->
-        <script src="https://kit.fontawesome.com/04d43c352d.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/04d43c352d.js"
+                crossorigin="anonymous"
+        >
+        </script>
 
-        <!-- Estyles -->
-
+        <!-- Styles CORE -->
+        <link rel="stylesheet" href="{% static 'core/css/core_style.css' %}">
+        
+        <!-- Styles BLOG -->
+        <link rel="stylesheet" href="{% static 'blog/css/blog_style.css' %}">
+        
+        <!-- Styles ABOUT -->
+        <link rel="stylesheet" href="{% static 'about/css/about_style.css' %}">
+        
+        <!-- Styles CONTACT -->
+        <link rel="stylesheet" href="{% static 'contact/css/contact_style.css' %}">
 
     </head>
-    <body>
 
+    <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
+        <nav class="navbar navbar-expand-lg py-3">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'blog_cards_list' %}"> Brand </a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarTogglerDemo02"
-                        aria-controls="navbarTogglerDemo02"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand" href="{% url 'blog_cards_list' %}" id="nav_links"> Brand </a>
+                <button 
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'blog_cards_list' %}"> Home </a>
+                            <a class="nav-link" href="{% url 'blog_cards_list' %}" id="nav_links"> Home </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'about' %}"> About </a>
+                            <a class="nav-link" href="{% url 'about' %}" id="nav_links"> About </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{% url 'contact' %}"> Contact </a>
+                            <a class="nav-link " href="{% url 'contact' %}" id="nav_links"> Contact </a>
                         </li>
                     </ul>
 
-                    <!-- Login -->
-                    <a class="btn btn-outline-primary mx-3 active" href="" role="button" aria-pressed="true">
-                        Access
+                    <!-- Login Admin -->
+                    <a href="/admin/">
+                        <button class="btn btn-outline-primary btn-sm" role="button" aria-pressed="true" id="button_access">
+                                Access
+                        </button>
                     </a>
 
-
-                    <!-- Search -->
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                        <button class="btn btn-outline-dark my-2 my-sm-0 border-light" type="submit">
-                            <i class="fas fa-search fa-1x"></i>
-                        </button>
-                    </form>
                 </div>
             </div>
         </nav>
 
+        <!-- Content -->
         {% block content %}
         {% endblock %}
 
         <!-- Footer -->
-        <footer class="footer text-center py-4 bg-light">
+        <footer class="footer text-center py-2">
             <div class="container">
                 <div class="col-md-12 py-4">
                     {% if Link_Facebook %}
-                    <a class="link" href="{{ Link_Facebook }}" >
+                    <a class="link" href="{{ Link_Facebook }}" id="footer_links">
                         <i class="fab fa-facebook-f mr-4 fa-2x"></i>
                     </a>
                     {% endif %}
                     {% if Link_Twitter %}
-                    <a class="link" href="{{ Link_Twitter }}" >
+                    <a class="link" href="{{ Link_Twitter }}" id="footer_links">
                         <i class="fab fa-twitter mr-4 fa-2x"></i>
                     </a>
                     {% endif %}
                     {% if Link_Instagram %}
-                    <a class="link" href="{{ Link_Instagram }}" >
+                    <a class="link" href="{{ Link_Instagram }}" id="footer_links">
                         <i class="fab fa-instagram  mr-4 fa-2x"></i>
                     </a>
                     {% endif %}
                     {% if Link_Linkedin %}
-                    <a class="link" href="{{ Link_Linkedin }}" >
+                    <a class="link" href="{{ Link_Linkedin }}" id="footer_links">
                         <i class="fab fa-linkedin-in mr-4 fa-2x"></i>
                     </a>
                     {% endif %}
                     {% if Link_Github %}
-                    <a class="link" href="{{ Link_Github }}" >
+                    <a class="link" href="{{ Link_Github }}" id="footer_links">
                         <i class="fab fa-github mr-4 fa-2x"></i>
                     </a>
                     {% endif %}
                 </div>
 
                 <!-- Copyright -->
-                <p> &copy <a href="https://www.giancarlov.com"> giancarlov.com - 2019</a></p>
+                <p id="date_footer"> 
+                    &copy {% now 'Y' %} - 
+                    <a href="https://www.giancarlov.com" id="date_footer"> giancarlov.com </a> 
+                </p>
             </div>
         </footer>
 
@@ -123,3 +136,18 @@
         </script>
     </body>
 </html>
+
+<!--
+    Id styles:  These IDs are unique to CSS styles.
+    File: static/core/css/core_style.css
+
+    Jumbotron:
+
+    Navbar:
+    id="nav_links"
+    id="button_access"
+
+    Footer:
+    id="footer_links"
+    id="date_footer"
+-->

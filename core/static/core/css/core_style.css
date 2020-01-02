@@ -1,0 +1,49 @@
+/* Styles Personal Blog | Core */
+
+/*
+PALETTE:
+    #001B2E
+    #294C60
+    #ADB6C4
+    #FFEFD3
+    #FFC49B
+*/
+
+
+/* Styles Navbar */
+.navbar{
+    background: #001B2E;
+}
+
+#nav_links{
+    color: #FFEFD3;
+}
+
+.navbar-toggler{
+    background: #294C60;
+    color: #FFEFD3;
+}
+
+#button_access{
+    background: #294C60;
+    color: #FFEFD3;
+    border: 0px;
+}
+
+
+
+/* Styles Footer */
+.footer{
+    background: #001B2E;
+    color: #FFEFD3;
+}
+
+#footer_links{
+    color: #FFEFD3;
+}
+
+#date_footer{
+    color: #FFC49B;
+}
+
+
