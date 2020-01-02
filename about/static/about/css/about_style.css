@@ -1,0 +1,26 @@
+/* Styles Personal Blog | About */
+
+/*
+PALETTE:
+    #001B2E
+    #294C60
+    #ADB6C4
+    #FFEFD3
+    #FFC49B
+*/
+
+#jumbotron_about{
+    background: white;
+    border: 1px solid #ADB6C4;
+
+}
+
+#title_and_subtitle{
+    color: #001B2E;
+}
+
+#about_me{
+    color: #294C60;
+    font-size: larger;
+}
+

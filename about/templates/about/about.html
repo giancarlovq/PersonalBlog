@@ -3,27 +3,44 @@
 
 {% block title %} About {% endblock %}
 
+{% load static %}
+
 {% block content %}
 
+    {% for about in model_about %}
     <div class="container">
-        <div class="jumbotron my-5">
+        <div class="jumbotron my-5 text-center" id="jumbotron_about">
             <div class="row">
-                <div class="col-md-12 col-xl-4">
-                    <img class="img-fluid rounded"  height="586" width="439" src="" alt="potho of the author">
+                <div class="col-md-12 col-xl-4 mb-5">
+                    <img class="img-fluid rounded-circle"
+                         height="350"
+                         width="280"
+                         src="{{ about.photo.url }}"
+                         alt="potho_of_the_author"
+                    >
                 </div>
                 <div class="col-md-12 col-xl-8">
-                    <h1 class="display-4 text-center"> Author Name </h1>
-                    <p class="lead text-center"> My passion </p>
+                    <h1 class="display-4 font-weight-bold" id="title_subtitle"> {{ about.user }} </h1>
+                    <p class="lead font-weight-bolder" id="title_and_subtitle"> {{ about.job }} </p>
                     <hr class="my-4">
-                    <p class="lead text-justify"> 
-                        Lorem A ipsum dolor sit amet consectetur adipisicing elit. Laborum incidunt ullam nemo cupiditate, inventore officiis
-                        id error nisi sint, asperiores velit aperiam praesentium commodi autem repellendus aliquam quae, molestiae quaerat. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius qui quis libero sed, quibusdam porro voluptates nobis 
-                        assumenda consequuntur magnam laborum iste consectetur? Atque eum aspernatur, illo quae non iusto!
+                    <p class="text-justify" id="about_me">
+                        {{ about.about_me }}
                     </p>
                 </div>
             </div>  
         </div>
     </div>
+    {% endfor %}
 
 {% endblock %}
+
+<!--
+    Id styles:  These IDs are unique to CSS styles.
+    File: static/about/css/about_style.css
+
+    Jumbotron:
+    id="jumbotron_about"
+    id="title_subtitle"
+    id="title_and_subtitle"
+    id="about_me"
+-->
