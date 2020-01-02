@@ -14,5 +14,8 @@ class Contact(models.Model):
     email_address = models.EmailField()
     message = models.TextField()
 
+    class Meta:
+        verbose_name_plural = 'Contact Form'
+
     def __str__(self):
         return self.user_name

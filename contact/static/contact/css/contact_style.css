@@ -1,0 +1,27 @@
+/* Styles Personal Blog | Contact */
+
+/*
+PALETTE:
+    #001B2E
+    #294C60
+    #ADB6C4
+    #FFEFD3
+    #FFC49B
+*/
+
+/* Title */
+#contact_title{
+    color: #001B2E;
+}
+
+/* Button Submit */
+#contact_submit{
+    background: #294C60;
+    color: #FFC49B;
+    border: 0px;
+}
+
+/*  Remove the ASTERISK from the form. */
+.asteriskField{
+    display: none;
+}
