@@ -1,0 +1,45 @@
+/* Styles Personal Blog | Publications | List and Detail */
+
+/*
+PALETTE:
+    #001B2E
+    #294C60
+    #ADB6C4
+    #FFEFD3
+    #FFC49B
+*/
+
+
+/* Styles Publication List */
+#jumbotron_blog{
+    background: white;
+    border: 1px solid #ADB6C4;
+}
+
+#blog_name{
+    color: #001B2E;
+}
+
+
+#blog_descriptions{
+    color: #294C60;
+    font-size: larger;
+}
+
+#blog_author{
+    color: #001B2E;
+    font-size: medium;
+}
+
+
+
+/* Styles Publication Detail */
+#container_publication{
+    border: 1px solid #ADB6C4;
+}
+
+
+/* Styles Title */
+#publication_title{
+    color: #001B2E;
+}

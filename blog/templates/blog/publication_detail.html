@@ -2,31 +2,33 @@
 
 {% block title %} Blog {% endblock %}
 
-
 {% block content %}
+    <!-- shadow-sm  bg-white rounded -->
+    <div class="container my-5 rounded" id="container_publication">
+        <div class=" p-5 mx-2 mb-5">
 
-    <div class="container my-5">
-        <div class="shadow-sm p-5 mx-2 mb-5 bg-white rounded">
-            <div class="container">
-                <div class="row">
-                    <div class="col-2">
-                        <span class="badge badge-primary"> Status:
-                            {{ publication.status }}
-                        </span>
-                    </div>
-                    <div class="col-7"></div>
-                    <div class="col-3 text-muted">
-                        Published:
-                        {{ publication.published | date:'SHORT_DATE_FORMAT' }}
-                    </div>
+            <!-- Head -->
+            <div class="row mx-md-n5">
+                <div class="col px-md-5">
+                    <span class="badge badge-secondary">
+                        Status: {{ publication.status }}
+                    </span>
+                </div>
+                <div class="col px-md-5 text-right">
+                    <span class="badge badge-secondary">
+                    Published: {{ publication.published | date:'SHORT_DATE_FORMAT' }}
+                    </span>
                 </div>
             </div>
+
+            <!-- Body -->
             <h1 class="display-3 mt-5 text-center"> {{ publication.title }} </h1>
             <blockquote class="blockquote">
                 <p class="text-center my-5"> {{ publication.subtitle }} </p>
             </blockquote>
             <p class=""> {{ publication.content | safe }}</p>
 
+            <!-- Footer -->
             <div class="p-3 mb-2 bg-white text-muted">
                 <p class="font-weight-bold"> Author: </p>
                 {{ publication.author }}
@@ -41,7 +43,7 @@
             {% if user.is_authenticated %}
                 <div class="text-center mt-5">
                     <a href="{% url 'admin:blog_publication_change' publication.id  %}">
-                        <button class="btn btn-outline-primary btn-lg" type="button">
+                        <button class="btn btn-outline-primary btn-sm" type="button">
                             Edit
                         </button>
                     </a>
@@ -51,3 +53,12 @@
     </div>
 
 {% endblock %}
+
+<!--
+    Id styles:  These IDs are unique to CSS styles.
+    File: static/core/css/core_style.css
+
+    Jumbotron:
+
+   
+-->

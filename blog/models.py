@@ -1,10 +1,13 @@
+""" Models Blog """
 
 # Django
 from django.db import models
-from django.utils.timezone import now
+# Django | Auth
 from django.contrib.auth.models import User
+# Django | Utilities
+from django.utils.timezone import now
 
-# Custom
+# Custom Ckeditor
 from ckeditor.fields import RichTextField
 
 
@@ -13,8 +16,8 @@ class BlogInformation(models.Model):
     """ Information about the blog. """
 
     name = models.CharField(max_length = 100)
-    descriptions = RichTextField()
-    author = models.ForeignKey(User, on_delete = models.CASCADE)
+    descriptions = models.TextField()
+    author = models.CharField(max_length = 100)
     created = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -43,7 +46,7 @@ class Publication(models.Model):
     content = RichTextField()
     published = models.DateTimeField(default = now)
     status = models.CharField(max_length = 50, null = True, blank = True)
-    sources = RichTextField(null = True, blank = True)
+    sources = models.TextField(null = True, blank = True)
     image = models.ImageField(upload_to = 'publication/images/')
     created = models.DateTimeField(default = now)
     updated = models.DateTimeField(auto_now = True)
@@ -54,8 +57,7 @@ class Publication(models.Model):
     class Meta:
         verbose_name_plural = 'Publications'
         ordering = [
-            '-created',
-            '-updated'
+            '-created'
             ]
 
     def __str__(self):

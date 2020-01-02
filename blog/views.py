@@ -1,11 +1,8 @@
 """ View List and Detail. """
 
 # Django
-from django.shortcuts import render
-from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.db import models
 
 # Local | Model
 from .models import Publication, BlogInformation
@@ -28,7 +25,6 @@ class BlogCardsList(ListView):
         context_blog_info = super().get_context_data(**kwargs)
         context_blog_info['blog_info'] = BlogInformation.objects.all()
         return context_blog_info
-
 
 
 class BlogPagesDetail(DetailView):
